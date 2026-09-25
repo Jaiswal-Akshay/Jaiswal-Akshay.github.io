@@ -1,6 +1,16 @@
 # Akshay Jaiswal — Portfolio
 
-A responsive personal portfolio showcasing software engineering, AI/ML, cloud, DevOps, experience, and selected projects.
+A responsive personal portfolio structured around Akshay's résumé and supplemented with verified LinkedIn profile details.
+
+## Sections
+
+- Professional summary
+- Professional experience and academic teaching roles
+- Education
+- Featured and secondary projects
+- Technical skills
+- Training, certifications, and honors
+- Contact links and downloadable résumé
 
 ## Run locally
 
@@ -29,8 +39,6 @@ Then visit `http://localhost:8000`.
 
 ## Customize next
 
-- Add a professional headshot.
-- Add your résumé PDF and update the hero button.
-- Replace project summaries with quantified outcomes where available.
+- Add a professional headshot if desired.
 - Add live-demo links for deployed projects.
-- Add accurate M.S. dates and expected graduation date.
+- Add an expected graduation date when confirmed.

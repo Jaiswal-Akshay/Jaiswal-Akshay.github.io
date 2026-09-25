@@ -36,7 +36,7 @@ img { display: block; max-width: 100%; }
 .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: -0.02em; }
 .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #04101f; font-size: 0.83rem; box-shadow: 0 8px 24px rgba(77, 141, 255, 0.28); }
-.nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: 0.93rem; }
+.nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 0.9rem; }
 .nav-links a { transition: color 180ms ease; }
 .nav-links a:hover { color: var(--text); }
 .nav-cta { padding: 10px 17px; border: 1px solid rgba(114, 168, 255, 0.45); border-radius: 999px; color: var(--text) !important; }
@@ -102,6 +102,13 @@ h1 span { display: block; color: var(--blue-bright); }
 .role-type { margin-bottom: 7px; color: var(--cyan); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
 .organization { margin-bottom: 13px; color: var(--blue-bright); font-weight: 700; }
 .timeline-card p:last-child { margin-bottom: 0; color: var(--muted); }
+.achievement-list { margin: 14px 0 0; padding-left: 20px; color: var(--muted); }
+.achievement-list li + li { margin-top: 9px; }
+
+.education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.education-card { padding: 32px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255, 255, 255, 0.025); }
+.education-card h3 { margin-bottom: 8px; font-size: 1.35rem; }
+.education-card p:last-child { margin-bottom: 0; color: var(--muted); }
 
 .project-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
 .text-link { flex: 0 0 auto; padding-bottom: 7px; color: var(--muted); font-size: 0.9rem; }
@@ -136,6 +143,11 @@ h1 span { display: block; color: var(--blue-bright); }
 .skill-group h3 { margin: 23px 0 13px; font-size: 1.25rem; }
 .skill-group p { margin: 0; color: var(--muted); font-size: 0.91rem; }
 
+.credentials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.credential-card { min-height: 150px; padding: 27px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255, 255, 255, 0.025); }
+.credential-card span { color: var(--cyan); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.credential-card h3 { margin: 17px 0 0; font-size: 1.08rem; line-height: 1.4; }
+
 .contact { text-align: center; }
 .contact-panel { position: relative; overflow: hidden; padding: 80px 30px; border: 1px solid rgba(114, 168, 255, 0.25); border-radius: 28px; background: linear-gradient(145deg, rgba(77, 141, 255, 0.11), rgba(82, 211, 216, 0.04)); box-shadow: var(--shadow); }
 .contact-panel::before { content: ""; position: absolute; width: 320px; height: 320px; right: -100px; top: -180px; border-radius: 50%; background: rgba(82, 211, 216, 0.08); }
@@ -161,7 +173,7 @@ h1 span { display: block; color: var(--blue-bright); }
   .split-section { grid-template-columns: 1fr; gap: 35px; }
   .featured-project { grid-template-columns: 1fr; }
   .project-image { min-height: 340px; }
-  .project-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-grid, .skills-grid, .credentials-grid { grid-template-columns: repeat(2, 1fr); }
   .compact-project-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -179,7 +191,7 @@ h1 span { display: block; color: var(--blue-bright); }
   .chip-two { right: 0; }
   .project-heading { display: block; }
   .project-heading .text-link { display: inline-block; margin-top: 18px; }
-  .project-grid, .skills-grid, .compact-project-grid { grid-template-columns: 1fr; }
+  .project-grid, .skills-grid, .compact-project-grid, .education-grid, .credentials-grid { grid-template-columns: 1fr; }
   .project-content { padding: 33px 25px; }
   .timeline::before { left: 6px; }
   .timeline-item { grid-template-columns: 1fr; gap: 9px; padding-left: 31px; }
