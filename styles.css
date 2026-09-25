@@ -130,7 +130,7 @@ h1 span { display: block; color: var(--blue-bright); }
 .project-card .tag-list { margin-bottom: 25px; }
 .project-card > a { color: var(--blue-bright); font-weight: 750; font-size: 0.86rem; }
 .more-projects { margin-top: 22px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255, 255, 255, 0.02); }
-.more-projects summary { padding: 21px 25px; cursor: pointer; color: #d7e5f7; font-weight: 750; }
+.more-projects-title { margin: 0; padding: 21px 25px; color: #d7e5f7; font-size: 1rem; }
 .compact-project-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; border-top: 1px solid var(--line); background: var(--line); }
 .compact-project-grid a { min-height: 145px; display: flex; flex-direction: column; justify-content: center; padding: 20px; background: var(--bg-soft); font-weight: 700; }
 .compact-project-grid a:hover { background: #10233c; }
