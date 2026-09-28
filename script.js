@@ -2,6 +2,7 @@ const header = document.querySelector('.site-header');
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const revealItems = document.querySelectorAll('.reveal');
+const backToTopButton = document.querySelector('#back-to-top');
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
@@ -34,3 +35,9 @@ const observer = new IntersectionObserver(
 );
 
 revealItems.forEach((item) => observer.observe(item));
+
+if (backToTopButton) {
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  });
+}
