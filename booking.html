@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Book a conversation with Akshay Jaiswal." />
+    <meta name="theme-color" content="#07111f" />
+    <title>Book a meeting | Akshay Jaiswal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="booking-page">
+    <header class="site-header" id="top">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Akshay Jaiswal home">
+          <span class="brand-mark">AJ</span>
+          <span>Akshay Jaiswal</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+          <span class="sr-only">Open navigation</span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html#summary">Summary</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#contact">Contact</a>
+          <a class="nav-cta" href="index.html">Back to portfolio</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="booking-main container">
+      <section class="booking-intro reveal">
+        <p class="eyebrow">Open calendar</p>
+        <h1>Let’s find a time to talk.</h1>
+        <p>Choose a time for a brief conversation about an opportunity, collaboration, or interesting engineering problem.</p>
+      </section>
+
+      <div class="booking-layout">
+        <aside class="booking-card booking-details reveal">
+          <p class="eyebrow">20-minute conversation</p>
+          <h2>Meet with Akshay</h2>
+          <p>A focused introduction is usually enough to understand whether there is a useful next conversation.</p>
+          <div class="meeting-meta">
+            <div><span class="meta-icon">◷</span><span><strong>Duration</strong><span>20 minutes</span></span></div>
+            <div><span class="meta-icon">◎</span><span><strong>Format</strong><span>Google Meet after confirmation</span></span></div>
+            <div><span class="meta-icon">⌁</span><span><strong>Timezone</strong><span>Pacific Time (PT)</span></span></div>
+          </div>
+          <p class="booking-note">Your request is not confirmed until I review it. I’ll reply by email if the selected time needs to change.</p>
+        </aside>
+
+        <section class="booking-card reveal" aria-labelledby="booking-form-title">
+          <h2 id="booking-form-title">Request a time</h2>
+          <p>Select a date and time, then share a little context.</p>
+          <form class="booking-form" id="booking-form">
+            <fieldset class="booking-step">
+              <legend><span class="step-number">1</span>Select a date</legend>
+              <div class="date-grid" id="date-options"></div>
+            </fieldset>
+
+            <fieldset class="booking-step">
+              <legend><span class="step-number">2</span>Select a time</legend>
+              <div class="time-grid">
+                <div class="time-option"><input id="time-9" type="radio" name="time" value="09:00" required /><label for="time-9">9:00 AM</label></div>
+                <div class="time-option"><input id="time-10" type="radio" name="time" value="10:00" /><label for="time-10">10:00 AM</label></div>
+                <div class="time-option"><input id="time-11" type="radio" name="time" value="11:00" /><label for="time-11">11:00 AM</label></div>
+                <div class="time-option"><input id="time-1" type="radio" name="time" value="13:00" /><label for="time-1">1:00 PM</label></div>
+                <div class="time-option"><input id="time-2" type="radio" name="time" value="14:00" /><label for="time-2">2:00 PM</label></div>
+              </div>
+            </fieldset>
+
+            <fieldset class="booking-step">
+              <legend><span class="step-number">3</span>Your details</legend>
+              <div class="field-grid">
+                <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required /></div>
+                <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+                <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></div>
+                <div class="field"><label for="role">Role / area</label><input id="role" name="role" placeholder="Recruiting, research, collaboration…" /></div>
+                <div class="field full"><label for="message">What would you like to discuss?</label><textarea id="message" name="message" placeholder="A sentence or two is plenty."></textarea></div>
+              </div>
+            </fieldset>
+
+            <p class="form-status" id="form-status" role="status"></p>
+            <button class="button primary booking-submit" type="submit">Request this time →</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer booking-footer">
+      <div class="container"><p>© <span id="year"></span> Akshay Jaiswal</p><a class="back-to-top" href="index.html">Back to portfolio ↗</a></div>
+    </footer>
+    <script src="booking.js"></script>
+  </body>
+</html>
