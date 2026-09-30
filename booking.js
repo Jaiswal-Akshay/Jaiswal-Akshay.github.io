@@ -56,12 +56,19 @@ bookingForm.addEventListener('submit', (event) => {
     data.get('message') || 'No additional context provided.'
   ].join('\n');
 
-  // Set BOOKING_ENDPOINT when the backend is ready. Until then, this opens a prefilled email request.
-  const BOOKING_ENDPOINT = '';
+  const BOOKING_ENDPOINT = window.BOOKING_ENDPOINT || '';
   if (BOOKING_ENDPOINT) {
-    fetch(BOOKING_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(data)) })
-      .then((response) => { if (!response.ok) throw new Error('Request failed'); showStatus('Thanks—the request was sent. I’ll follow up by email after reviewing the time.'); bookingForm.reset(); })
-      .catch(() => showStatus('The request could not be sent. Please try again or email me directly.', true));
+    // Google Apps Script web apps do not expose CORS response headers. no-cors still
+    // delivers the form request while keeping the visitor on this page.
+    fetch(BOOKING_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: new URLSearchParams(Object.fromEntries(data))
+    }).then(() => {
+      showStatus('Request submitted. I’ll review it and email you after confirming the time.');
+      bookingForm.reset();
+    }).catch(() => showStatus('The request could not be sent. Please try again or email me directly.', true));
     return;
   }
 
