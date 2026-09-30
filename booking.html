@@ -55,18 +55,19 @@
           <form class="booking-form" id="booking-form">
             <fieldset class="booking-step">
               <legend><span class="step-number">1</span>Select a date</legend>
-              <div class="date-grid" id="date-options"></div>
+              <div class="calendar-field">
+                <label class="sr-only" for="meeting-date">Meeting date</label>
+                <input id="meeting-date" name="date" type="date" required />
+                <span>Available Monday–Friday · Pacific Time</span>
+              </div>
             </fieldset>
 
             <fieldset class="booking-step">
               <legend><span class="step-number">2</span>Select a time</legend>
-              <div class="time-grid">
-                <div class="time-option"><input id="time-9" type="radio" name="time" value="09:00" required /><label for="time-9">9:00 AM</label></div>
-                <div class="time-option"><input id="time-10" type="radio" name="time" value="10:00" /><label for="time-10">10:00 AM</label></div>
-                <div class="time-option"><input id="time-11" type="radio" name="time" value="11:00" /><label for="time-11">11:00 AM</label></div>
-                <div class="time-option"><input id="time-1" type="radio" name="time" value="13:00" /><label for="time-1">1:00 PM</label></div>
-                <div class="time-option"><input id="time-2" type="radio" name="time" value="14:00" /><label for="time-2">2:00 PM</label></div>
-              </div>
+              <label class="sr-only" for="meeting-time">Meeting time</label>
+              <select id="meeting-time" name="time" class="time-select" required>
+                <option value="" selected disabled>Select a time</option>
+              </select>
             </fieldset>
 
             <fieldset class="booking-step">
@@ -74,9 +75,7 @@
               <div class="field-grid">
                 <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required /></div>
                 <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
-                <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></div>
-                <div class="field"><label for="role">Role / area</label><input id="role" name="role" placeholder="Recruiting, research, collaboration…" /></div>
-                <div class="field full"><label for="message">What would you like to discuss?</label><textarea id="message" name="message" placeholder="A sentence or two is plenty."></textarea></div>
+                <div class="field full"><label for="message">Reason for meeting <span class="optional">(optional)</span></label><textarea id="message" name="message" placeholder="A sentence or two is plenty."></textarea></div>
               </div>
             </fieldset>
 

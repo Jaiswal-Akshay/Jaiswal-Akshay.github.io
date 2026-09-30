@@ -1,6 +1,7 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-const dateOptions = document.querySelector('#date-options');
+const meetingDate = document.querySelector('#meeting-date');
+const meetingTime = document.querySelector('#meeting-time');
 const bookingForm = document.querySelector('#booking-form');
 const formStatus = document.querySelector('#form-status');
 
@@ -13,25 +14,21 @@ if (menuButton && navLinks) {
   });
 }
 
-const formatDate = (date, options) => new Intl.DateTimeFormat('en-US', options).format(date);
-const availableDates = [];
-const cursor = new Date();
-cursor.setHours(0, 0, 0, 0);
+const pad = (value) => String(value).padStart(2, '0');
+const today = new Date();
+const minimumDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+meetingDate.min = `${minimumDate.getFullYear()}-${pad(minimumDate.getMonth() + 1)}-${pad(minimumDate.getDate())}`;
 
-while (availableDates.length < 8) {
-  cursor.setDate(cursor.getDate() + 1);
-  if (cursor.getDay() !== 0 && cursor.getDay() !== 6) availableDates.push(new Date(cursor));
+for (let minutes = 9 * 60; minutes <= 17 * 60; minutes += 30) {
+  const hours = Math.floor(minutes / 60);
+  const minuteValue = minutes % 60;
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const displayHour = hours % 12 || 12;
+  const option = document.createElement('option');
+  option.value = `${pad(hours)}:${pad(minuteValue)}`;
+  option.textContent = `${displayHour}:${pad(minuteValue)} ${period}`;
+  meetingTime.appendChild(option);
 }
-
-availableDates.forEach((date, index) => {
-  const value = date.toISOString().slice(0, 10);
-  const id = `date-${value}`;
-  const option = document.createElement('div');
-  option.className = 'date-option';
-  option.innerHTML = `<input id="${id}" type="radio" name="date" value="${value}" ${index === 0 ? 'checked' : ''} required />
-    <label for="${id}"><strong>${formatDate(date, { weekday: 'short' })}</strong><span>${formatDate(date, { month: 'short', day: 'numeric' })}</span></label>`;
-  dateOptions.appendChild(option);
-});
 
 const showStatus = (message, isError = false) => {
   formStatus.textContent = message;
@@ -42,16 +39,19 @@ const showStatus = (message, isError = false) => {
 bookingForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(bookingForm);
+  const selectedDate = new Date(`${data.get('date')}T00:00:00`);
+  if (selectedDate.getDay() === 0 || selectedDate.getDay() === 6) {
+    showStatus('Please select a weekday. Meetings are available Monday through Friday.', true);
+    return;
+  }
   const date = new Date(`${data.get('date')}T${data.get('time')}:00`);
-  const readableDate = date.toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const readableDate = date.toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
   const subject = `Meeting request from ${data.get('name')}`;
   const body = [
-    `Meeting request for ${readableDate} at ${data.get('time')} PT`,
+    `Meeting request for ${readableDate} PT`,
     '',
     `Name: ${data.get('name')}`,
     `Email: ${data.get('email')}`,
-    `Company: ${data.get('company') || 'Not provided'}`,
-    `Role / area: ${data.get('role') || 'Not provided'}`,
     '',
     data.get('message') || 'No additional context provided.'
   ].join('\n');
